@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-	public Animator anim;
+	private Animator anim;
 	public float speed = 5f;
-	bool rightFace;
+	public static bool rightFace;
 	private Rigidbody2D rbPlayer;
-	float screenHalfWidth;
-    float playerW;
+	private float screenHalfWidth;
+    private float playerW;
 	public Transform[] groundPoints;
 	public float groundRad;
 	[SerializeField]
@@ -17,6 +17,11 @@ public class Player : MonoBehaviour {
 	private bool jump;
 	[SerializeField]
 	private float jumpForce;
+	private float nextShot;
+	public float fireRate;
+	public Transform shotspwn;
+	public GameObject beam;
+	
 	void Start () {
 		rightFace = false;
 		anim = GetComponent<Animator>();
@@ -60,9 +65,10 @@ public class Player : MonoBehaviour {
 	void HandleInput(){
 		if(Input.GetKeyDown(KeyCode.W)){
 			jump = true;
-			//
-			
-			
+		}
+		if(Input.GetKey(KeyCode.Space) && Time.time > nextShot){
+			nextShot = Time.time + fireRate;
+			Instantiate(beam,shotspwn.position,shotspwn.rotation);
 		}
 	}
 	void Flip(float inputH){
