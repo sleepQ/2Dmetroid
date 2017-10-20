@@ -13,7 +13,8 @@ public class CamPos : MonoBehaviour {
 	}
 	
 	void LateUpdate () {
-		transform.position = new Vector3(transform.position.x,Mathf.Clamp(target.position.y,yMin,yMax),transform.position.z);
-		
+		if(!Player.isDead){
+			transform.position = new Vector3(transform.position.x,Mathf.Clamp(target.position.y,yMin,yMax),transform.position.z);
+		}
 	}
 }

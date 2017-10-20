@@ -21,8 +21,9 @@ public class Player : MonoBehaviour {
 	public float fireRate;
 	public Transform shotspwn;
 	public GameObject beam;
-	
+	public static bool isDead;
 	void Start () {
+		isDead = false;
 		rightFace = false;
 		anim = GetComponent<Animator>();
 		rbPlayer = GetComponent<Rigidbody2D>();
@@ -31,15 +32,17 @@ public class Player : MonoBehaviour {
 	}
 	void Update()
 	{
+		if(!isDead){
 			HandleInput();
+		}
 	}
 	void FixedUpdate () {
-
-		float inputH = Input.GetAxisRaw("Horizontal");
-		isGrounded = IsGrounded();
-		Movement(inputH);
-		Flip(inputH);
-		
+		if(!isDead){
+			float inputH = Input.GetAxisRaw("Horizontal");
+			isGrounded = IsGrounded();
+			Movement(inputH);
+			Flip(inputH);
+		}
 	}
 	void Movement(float inputH){
 		GetComponent<Animator>().enabled = true;
@@ -54,7 +57,7 @@ public class Player : MonoBehaviour {
 			isGrounded = false;
 			rbPlayer.AddForce(new Vector2(0,jumpForce));
 		}
-		if (transform.position.x < -screenHalfWidth + + playerW) {
+		if (transform.position.x < -screenHalfWidth + playerW) {
             transform.position = new Vector2(-screenHalfWidth + playerW, transform.position.y);
         }
         if (transform.position.x > screenHalfWidth - playerW) {
@@ -96,6 +99,15 @@ public class Player : MonoBehaviour {
 			}
 		}
 		return false;
+	}
+
+	void OnTriggerEnter2D(Collider2D other){
+		if(other.tag == "enemy"){
+			isDead = true;
+			anim.SetBool("dead",true);
+			GameControl.instance.PlayerDied();
+			
+		}
 	}
 	
 }
