@@ -12,8 +12,16 @@ public class Enemy : MonoBehaviour {
  void Start(){
 	 
 	 direction = 1;
-	 rightLimit = (platform.position.x/2)+platform.position.x;
-	 leftLimit = platform.position.x - (platform.position.x/2);
+		if(platform.position.x > 0){
+			rightLimit = (platform.position.x/2)+platform.position.x;
+			leftLimit = platform.position.x - (platform.position.x/2);
+		}else if(platform.position.x < 0){
+			rightLimit = (-platform.position.x/2)+platform.position.x;
+			leftLimit = platform.position.x - (-platform.position.x/2);	
+		}else{
+			rightLimit = platform.localScale.x/2;
+			leftLimit = -platform.localScale.x/2;
+		}
 	 hitsToDestroy = 0;
  }
  

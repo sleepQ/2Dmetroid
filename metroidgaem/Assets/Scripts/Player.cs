@@ -22,7 +22,10 @@ public class Player : MonoBehaviour {
 	public Transform shotspwn;
 	public GameObject beam;
 	public static bool isDead;
+	private bool dblJump;
+	private float jumped;
 	void Start () {
+		dblJump = false;
 		isDead = false;
 		rightFace = false;
 		anim = GetComponent<Animator>();
@@ -45,16 +48,15 @@ public class Player : MonoBehaviour {
 		}
 	}
 	void Movement(float inputH){
-		GetComponent<Animator>().enabled = true;
 		rbPlayer.velocity = new Vector2(inputH * speed,rbPlayer.velocity.y);
 		anim.SetFloat("speed",Mathf.Abs(inputH));
-		if(!isGrounded){
-			GetComponent<Animator>().enabled = false;
-		}
-		if(isGrounded && jump){
-			
+		if(!isGrounded && jump){
 			jump = false;
 			isGrounded = false;
+			anim.SetBool("jump1",true);
+		}
+		if(isGrounded && jump){
+			dblJump = true;
 			rbPlayer.AddForce(new Vector2(0,jumpForce));
 		}
 		if (transform.position.x < -screenHalfWidth + playerW) {
@@ -68,7 +70,16 @@ public class Player : MonoBehaviour {
 	void HandleInput(){
 		if(Input.GetKeyDown(KeyCode.W)){
 			jump = true;
+			if(Input.GetKeyDown(KeyCode.W) && !isGrounded && dblJump){
+				dblJump = false;
+					anim.SetBool("jump",true);
+					
+					rbPlayer.AddForce(new Vector2(0,jumpForce/2));
+				
+				Debug.Log("dbl");
+			}
 		}
+		
 		if(Input.GetKey(KeyCode.Space) && Time.time > nextShot){
 			nextShot = Time.time + fireRate;
 			Instantiate(beam,shotspwn.position,shotspwn.rotation);
@@ -86,13 +97,14 @@ public class Player : MonoBehaviour {
 	private bool IsGrounded(){
 		// if its == 0 it queeus jumps after decelerating
 		//if its <= 0 it has some weird mini jumps after spammin jump and landing
-		if(rbPlayer.velocity.y <= 0){
+		if(rbPlayer.velocity.y == 0){
 			foreach(Transform point in groundPoints){
 				Collider2D[] colliders = Physics2D.OverlapCircleAll(point.position,groundRad,whatIsGround);
 				for(var i=0;i<colliders.Length;i++){
 					if(colliders[i].gameObject != gameObject){
+						anim.SetBool("jump",false);
+						anim.SetBool("jump1",false);
 						
-					
 						return true;
 					}
 				}
