@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 542}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -233,7 +233,7 @@ MonoBehaviour:
   - {fileID: 19}
   - {fileID: 20}
   m_Selected: 0
-  m_LastSelected: 1
+  m_LastSelected: 2
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -462,8 +462,8 @@ MonoBehaviour:
     height: 415
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: fa270000
-    m_LastClickedID: 10234
+    m_SelectedIDs: 
+    m_LastClickedID: 0
     m_ExpandedIDs: 1afcffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -519,9 +519,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.20563494, y: -2.5325456, z: 0.125}
+    m_Target: {x: 1.2058516, y: 27.570162, z: 0.125}
     speed: 2
-    m_Value: {x: 0.20563494, y: -2.5325456, z: 0.125}
+    m_Value: {x: 1.2058516, y: 27.570162, z: 0.125}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -548,9 +548,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 7.797481
+    m_Target: 15.350398
     speed: 2
-    m_Value: 7.797481
+    m_Value: 15.350398
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -619,7 +619,7 @@ MonoBehaviour:
     m_KeySerializationHelper:
     - {fileID: 1107422970024474928, guid: f3cab66eeb8428649a3bea0c61a5f1f6, type: 2}
     m_ValueSerializationHelper:
-    - {x: 408.40002, y: 304}
+    - {x: 379.40002, y: 359}
   m_PreviewAnimator: {fileID: 0}
   m_AnimatorController: {fileID: 0}
   m_BreadCrumbs: []
@@ -681,9 +681,9 @@ MonoBehaviour:
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 44270000
-    m_LastClickedID: 10052
-    m_ExpandedIDs: 00000000fe25000000ca9a3bffffff7f
+    m_SelectedIDs: 7c270000
+    m_LastClickedID: 10108
+    m_ExpandedIDs: 00000000fe250000d426000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -818,10 +818,10 @@ MonoBehaviour:
     y: 92
     width: 289
     height: 746
-  m_ScrollPosition: {x: 0, y: 102.95508}
+  m_ScrollPosition: {x: 0, y: 0}
   m_InspectorMode: 0
   m_PreviewResizer:
-    m_CachedPref: -263
+    m_CachedPref: -197
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}

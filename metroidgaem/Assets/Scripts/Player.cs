@@ -23,13 +23,19 @@ public class Player : MonoBehaviour {
 	public GameObject beam;
 	public static bool isDead;
 	private bool dblJump;
-	private float jumped;
+	public GameObject jumpParticle;
+	private AudioManager a;
+	private bool playedSound;
+	void Awake(){
+		a = FindObjectOfType<AudioManager>();
+		anim = GetComponent<Animator>();
+		rbPlayer = GetComponent<Rigidbody2D>();
+	}
 	void Start () {
+		playedSound = false;
 		dblJump = false;
 		isDead = false;
 		rightFace = false;
-		anim = GetComponent<Animator>();
-		rbPlayer = GetComponent<Rigidbody2D>();
 		playerW = transform.localScale.x;
         screenHalfWidth = Camera.main.aspect * Camera.main.orthographicSize;
 	}
@@ -57,6 +63,7 @@ public class Player : MonoBehaviour {
 		}
 		if(isGrounded && jump){
 			dblJump = true;
+			Instantiate(jumpParticle,transform.position,transform.rotation);
 			rbPlayer.AddForce(new Vector2(0,jumpForce));
 		}
 		if (transform.position.x < -screenHalfWidth + playerW) {
@@ -73,16 +80,15 @@ public class Player : MonoBehaviour {
 			if(Input.GetKeyDown(KeyCode.W) && !isGrounded && dblJump){
 				dblJump = false;
 					anim.SetBool("jump",true);
-					
+					Instantiate(jumpParticle,transform.position,transform.rotation);
 					rbPlayer.AddForce(new Vector2(0,jumpForce/2));
-				
-				Debug.Log("dbl");
 			}
 		}
 		
 		if(Input.GetKey(KeyCode.Space) && Time.time > nextShot){
 			nextShot = Time.time + fireRate;
 			Instantiate(beam,shotspwn.position,shotspwn.rotation);
+			a.Play("shot");
 		}
 	}
 	void Flip(float inputH){
@@ -110,6 +116,8 @@ public class Player : MonoBehaviour {
 				}
 			}
 		}
+		anim.SetBool("jump1",true);
+		
 		return false;
 	}
 
@@ -118,7 +126,10 @@ public class Player : MonoBehaviour {
 			isDead = true;
 			anim.SetBool("dead",true);
 			GameControl.instance.PlayerDied();
-			
+			if(!playedSound){
+				a.Play("lose");
+				playedSound = true;
+			}
 		}
 	}
 	

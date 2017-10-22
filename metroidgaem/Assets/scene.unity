@@ -277,11 +277,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 310920894}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -5.06, z: 0}
+  m_LocalPosition: {x: 0, y: -5.0099993, z: 0}
   m_LocalScale: {x: 8.112496, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_Father: {fileID: 792719099}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &310920899
 MonoBehaviour:
@@ -496,7 +496,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &540725997
 MonoBehaviour:
@@ -697,6 +697,8 @@ MonoBehaviour:
   fireRate: 0.2
   shotspwn: {fileID: 618279686}
   beam: {fileID: 1102607732228444, guid: 6fc160af831d64047a760b0241b7c988, type: 2}
+  jumpParticle: {fileID: 1401598617416918, guid: af878fd6557b69d45932a08ee5af243e,
+    type: 2}
 --- !u!50 &571295804
 Rigidbody2D:
   serializedVersion: 4
@@ -804,6 +806,103 @@ Transform:
   m_Father: {fileID: 571295802}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &649410137
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 114697227194527414, guid: 73b2434b5e5ba79458c7010472d64d2f,
+        type: 2}
+      propertyPath: sounds.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4439243856761348, guid: 73b2434b5e5ba79458c7010472d64d2f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4439243856761348, guid: 73b2434b5e5ba79458c7010472d64d2f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4439243856761348, guid: 73b2434b5e5ba79458c7010472d64d2f, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4439243856761348, guid: 73b2434b5e5ba79458c7010472d64d2f, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4439243856761348, guid: 73b2434b5e5ba79458c7010472d64d2f, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4439243856761348, guid: 73b2434b5e5ba79458c7010472d64d2f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4439243856761348, guid: 73b2434b5e5ba79458c7010472d64d2f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4439243856761348, guid: 73b2434b5e5ba79458c7010472d64d2f, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114697227194527414, guid: 73b2434b5e5ba79458c7010472d64d2f,
+        type: 2}
+      propertyPath: sounds.Array.data[2].name
+      value: lose
+      objectReference: {fileID: 0}
+    - target: {fileID: 114697227194527414, guid: 73b2434b5e5ba79458c7010472d64d2f,
+        type: 2}
+      propertyPath: sounds.Array.data[2].loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114697227194527414, guid: 73b2434b5e5ba79458c7010472d64d2f,
+        type: 2}
+      propertyPath: sounds.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3a5aee5c1e2aaea499f2f3b1e5cb46e8, type: 3}
+    - target: {fileID: 114697227194527414, guid: 73b2434b5e5ba79458c7010472d64d2f,
+        type: 2}
+      propertyPath: sounds.Array.data[2].volume
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114697227194527414, guid: 73b2434b5e5ba79458c7010472d64d2f,
+        type: 2}
+      propertyPath: sounds.Array.data[2].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114697227194527414, guid: 73b2434b5e5ba79458c7010472d64d2f,
+        type: 2}
+      propertyPath: sounds.Array.data[0].volume
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114697227194527414, guid: 73b2434b5e5ba79458c7010472d64d2f,
+        type: 2}
+      propertyPath: sounds.Array.data[3].name
+      value: win
+      objectReference: {fileID: 0}
+    - target: {fileID: 114697227194527414, guid: 73b2434b5e5ba79458c7010472d64d2f,
+        type: 2}
+      propertyPath: sounds.Array.data[3].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: cf0931fd5f3ed1c43b223241c4d78a33, type: 3}
+    - target: {fileID: 114697227194527414, guid: 73b2434b5e5ba79458c7010472d64d2f,
+        type: 2}
+      propertyPath: sounds.Array.data[3].volume
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114697227194527414, guid: 73b2434b5e5ba79458c7010472d64d2f,
+        type: 2}
+      propertyPath: sounds.Array.data[3].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 73b2434b5e5ba79458c7010472d64d2f, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &701958007
 GameObject:
   m_ObjectHideFlags: 0
@@ -910,6 +1009,7 @@ Transform:
   - {fileID: 1630804974}
   - {fileID: 1108439706}
   - {fileID: 494735314}
+  - {fileID: 310920898}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1298,6 +1398,10 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: 0.09
       objectReference: {fileID: 0}
+    - target: {fileID: 1120725432361366, guid: 261e4f3791baf2641b287bb29d33629f, type: 2}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 261e4f3791baf2641b287bb29d33629f, type: 2}
   m_IsPrefabParent: 0
@@ -1579,7 +1683,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1757345349
 Prefab:

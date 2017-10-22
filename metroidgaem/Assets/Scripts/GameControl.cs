@@ -5,10 +5,12 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameControl : MonoBehaviour {
+	private AudioManager a;
 	public static GameControl instance;
 	public GameObject gameOverText;
 	private bool gameOver = false;
 	void Awake(){
+		a = FindObjectOfType<AudioManager>();
 		if(instance == null){
 			instance = this;
 		}else if(instance != this){
@@ -18,10 +20,12 @@ public class GameControl : MonoBehaviour {
 	void Update () {
 		if(gameOver && Input.GetKeyDown(KeyCode.Space)){
 			SceneManager.LoadScene(0);
+			a.Play("music2");
 		}
 	}
 	public void PlayerDied(){
 		gameOverText.SetActive(true);
 		gameOver = true;
+		a.Stop("music2");
 	}
 }
