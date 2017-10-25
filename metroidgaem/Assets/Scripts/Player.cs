@@ -7,8 +7,6 @@ public class Player : MonoBehaviour {
 	public float speed = 5f;
 	public static bool rightFace;
 	private Rigidbody2D rbPlayer;
-	private float screenHalfWidth;
-    private float playerW;
 	public Transform[] groundPoints;
 	public float groundRad;
 	[SerializeField]
@@ -20,34 +18,46 @@ public class Player : MonoBehaviour {
 	private float nextShot;
 	public float fireRate;
 	public Transform shotspwn;
+	public Transform duckshotspwn;
 	public GameObject beam;
 	public static bool isDead;
+	private bool won;
 	private bool dblJump;
 	public GameObject jumpParticle;
 	private AudioManager a;
 	private bool playedSound;
+	private bool ducked;
+	float inputH;
+	private BoxCollider2D boxcoll;
 	void Awake(){
 		a = FindObjectOfType<AudioManager>();
 		anim = GetComponent<Animator>();
 		rbPlayer = GetComponent<Rigidbody2D>();
+		boxcoll = GetComponent<BoxCollider2D>();
 	}
 	void Start () {
+		won = false;
 		playedSound = false;
 		dblJump = false;
 		isDead = false;
 		rightFace = false;
-		playerW = transform.localScale.x;
-        screenHalfWidth = Camera.main.aspect * Camera.main.orthographicSize;
 	}
-	void Update()
-	{
-		if(!isDead){
+	// void FixedUpdate()
+	// if(!isDead){
+		// 	float inputH = Input.GetAxisRaw("Horizontal");
+		// 	//from upd
+			
+		// 	isGrounded = IsGrounded();
+		// 	Movement(inputH);
+		// 	Flip(inputH);
+		// }
+	// }
+	void Update () {
+		if(!isDead && !won){
+			inputH = Input.GetAxisRaw("Horizontal");
+			//from upd
 			HandleInput();
-		}
-	}
-	void FixedUpdate () {
-		if(!isDead){
-			float inputH = Input.GetAxisRaw("Horizontal");
+	
 			isGrounded = IsGrounded();
 			Movement(inputH);
 			Flip(inputH);
@@ -57,24 +67,21 @@ public class Player : MonoBehaviour {
 		rbPlayer.velocity = new Vector2(inputH * speed,rbPlayer.velocity.y);
 		anim.SetFloat("speed",Mathf.Abs(inputH));
 		if(!isGrounded && jump){
+			//jump was and is here
 			jump = false;
 			isGrounded = false;
 			anim.SetBool("jump1",true);
 		}
 		if(isGrounded && jump){
+			//jump was not here
+			jump = false;
 			dblJump = true;
 			Instantiate(jumpParticle,transform.position,transform.rotation);
 			rbPlayer.AddForce(new Vector2(0,jumpForce));
-		}
-		if (transform.position.x < -screenHalfWidth + playerW) {
-            transform.position = new Vector2(-screenHalfWidth + playerW, transform.position.y);
-        }
-        if (transform.position.x > screenHalfWidth - playerW) {
-            transform.position = new Vector2(screenHalfWidth - playerW, transform.position.y);
-        }
-		
+		}		
 	}
 	void HandleInput(){
+		ducked = anim.GetBool("duck");
 		if(Input.GetKeyDown(KeyCode.W)){
 			jump = true;
 			if(Input.GetKeyDown(KeyCode.W) && !isGrounded && dblJump){
@@ -87,14 +94,27 @@ public class Player : MonoBehaviour {
 		
 		if(Input.GetKey(KeyCode.Space) && Time.time > nextShot){
 			nextShot = Time.time + fireRate;
-			Instantiate(beam,shotspwn.position,shotspwn.rotation);
+			if(ducked == true){
+				Instantiate(beam,duckshotspwn.position,duckshotspwn.rotation);
+			}else{
+				Instantiate(beam,shotspwn.position,shotspwn.rotation);
+			}
 			a.Play("shot");
 		}
+		if(Input.GetKey(KeyCode.S) && isGrounded){
+			anim.SetBool("duck",true);
+			boxcoll.offset = new Vector2(-0.5f,-1.31f);
+			boxcoll.size = new Vector2(3.74f,2f);
+		}
+		if(Input.GetKeyUp(KeyCode.S) || inputH != 0){
+			anim.SetBool("duck",false);
+			boxcoll.offset = new Vector2(0.15f,0.03f);
+			boxcoll.size = new Vector2(0.81f,4.56f);
+		}	
 	}
 	void Flip(float inputH){
 		if(inputH > 0 && !rightFace || inputH < 0 && rightFace){
 			rightFace = !rightFace;
-
 			Vector3 scale = transform.localScale;
 			scale.x *= -1;
 			transform.localScale = scale;
@@ -117,20 +137,30 @@ public class Player : MonoBehaviour {
 			}
 		}
 		anim.SetBool("jump1",true);
-		
+		anim.SetBool("duck",false);
 		return false;
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
 		if(other.tag == "enemy"){
-			isDead = true;
-			anim.SetBool("dead",true);
-			GameControl.instance.PlayerDied();
+			if(!won){	
+				isDead = true;
+				anim.SetBool("dead",true);
+				GameControl.instance.PlayerDied();
+				if(!playedSound){
+					a.Play("lose");
+					playedSound = true;
+				}
+			}
+		}
+		if(other.tag == "gem"){
+			won = true;
+			GameControl.instance.PlayerWon();
 			if(!playedSound){
-				a.Play("lose");
+				a.Play("win");
 				playedSound = true;
 			}
 		}
 	}
-	
+
 }

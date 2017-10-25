@@ -6,6 +6,8 @@ public class CamPos : MonoBehaviour {
 
 	public float yMin = 0;
 	public float yMax = 27f;
+	public float xMin = 4.8f;
+	public float xMax = -4.8f;
 	private Transform target;
 	// Use this for initialization
 	void Start () {
@@ -14,7 +16,7 @@ public class CamPos : MonoBehaviour {
 	
 	void LateUpdate () {
 		if(!Player.isDead){
-			transform.position = new Vector3(transform.position.x,Mathf.Clamp(target.position.y,yMin,yMax),transform.position.z);
+			transform.position = new Vector3(Mathf.Clamp(target.position.x,xMin,xMax),Mathf.Clamp(target.position.y,yMin,yMax),transform.position.z);
 		}
 	}
 }

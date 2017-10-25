@@ -8,6 +8,7 @@ TagManager:
   - enemy
   - beam
   - laststage
+  - gem
   layers:
   - Default
   - TransparentFX
