@@ -1,9 +1,9 @@
 ﻿using UnityEngine.Audio;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 public class AudioManager : MonoBehaviour {
 	public Sound[] sounds;
-	// Use this for initialization
 	public static AudioManager instance;
 	void Awake () {
 		if(instance == null){
@@ -21,12 +21,16 @@ public class AudioManager : MonoBehaviour {
 			s.source.pitch = s.pitch;
 			s.source.loop = s.loop;
 		}
+		if(SceneManager.GetActiveScene().name == "scene"){
+			Play("music2");
+		}
+		if(SceneManager.GetActiveScene().name == "boss"){
+			Play("music");
+		}
 	}
-	void Start(){
-		Play("music2");
-	}
-	
-	// Update is called once per frame
+	// void Start(){
+	// 		Play("music2");
+	// }
 	public void Play (string name) {
 		Sound s = Array.Find(sounds,sound => sound.name == name);
 			if(s == null){
@@ -37,7 +41,7 @@ public class AudioManager : MonoBehaviour {
 	}
 	public void Stop(string name){
 		Sound s = Array.Find(sounds,sound => sound.name == name);
-		if(s == null){
+			if(s == null){
 				Debug.LogWarning("Sound: "+name+" not found");
 				return;
 			}

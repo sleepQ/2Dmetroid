@@ -7,8 +7,8 @@ TagManager:
   - platform
   - enemy
   - beam
-  - laststage
   - gem
+  - bossBeam
   layers:
   - Default
   - TransparentFX

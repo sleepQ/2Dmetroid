@@ -21,23 +21,18 @@ public class Player : MonoBehaviour {
 	public Transform duckshotspwn;
 	public GameObject beam;
 	public static bool isDead;
-	private bool won;
 	private bool dblJump;
 	public GameObject jumpParticle;
-	private AudioManager a;
-	private bool playedSound;
 	private bool ducked;
 	float inputH;
 	private BoxCollider2D boxcoll;
 	void Awake(){
-		a = FindObjectOfType<AudioManager>();
 		anim = GetComponent<Animator>();
 		rbPlayer = GetComponent<Rigidbody2D>();
 		boxcoll = GetComponent<BoxCollider2D>();
 	}
 	void Start () {
-		won = false;
-		playedSound = false;
+		
 		dblJump = false;
 		isDead = false;
 		rightFace = false;
@@ -53,7 +48,7 @@ public class Player : MonoBehaviour {
 		// }
 	// }
 	void Update () {
-		if(!isDead && !won){
+		if(!isDead){
 			inputH = Input.GetAxisRaw("Horizontal");
 			//from upd
 			HandleInput();
@@ -94,12 +89,12 @@ public class Player : MonoBehaviour {
 		
 		if(Input.GetKey(KeyCode.Space) && Time.time > nextShot){
 			nextShot = Time.time + fireRate;
+			//sound 
 			if(ducked == true){
 				Instantiate(beam,duckshotspwn.position,duckshotspwn.rotation);
 			}else{
 				Instantiate(beam,shotspwn.position,shotspwn.rotation);
 			}
-			a.Play("shot");
 		}
 		if(Input.GetKey(KeyCode.S) && isGrounded){
 			anim.SetBool("duck",true);
@@ -142,24 +137,13 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
-		if(other.tag == "enemy"){
-			if(!won){	
+		if(other.tag == "enemy" || other.tag == "bossBeam"){
 				isDead = true;
 				anim.SetBool("dead",true);
 				GameControl.instance.PlayerDied();
-				if(!playedSound){
-					a.Play("lose");
-					playedSound = true;
-				}
-			}
 		}
 		if(other.tag == "gem"){
-			won = true;
-			GameControl.instance.PlayerWon();
-			if(!playedSound){
-				a.Play("win");
-				playedSound = true;
-			}
+			GameControl.instance.BossScene();
 		}
 	}
 

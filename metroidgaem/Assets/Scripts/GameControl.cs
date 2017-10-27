@@ -9,8 +9,9 @@ public class GameControl : MonoBehaviour {
 	public static GameControl instance;
 	public GameObject gameOverText;
 	public GameObject winText;
-	private bool gameOver = false;
-	private bool won = false;
+	private bool gameOver;
+	private bool won;
+	private bool soundPlayed = false;
 	void Awake(){
 		a = FindObjectOfType<AudioManager>();
 		if(instance == null){
@@ -19,24 +20,46 @@ public class GameControl : MonoBehaviour {
 			Destroy(gameObject);
 		}
 	}
+	void Start(){
+		won = false;
+		gameOver = false;
+	}
 	void Update () {
 		if(gameOver && Input.GetKeyDown(KeyCode.Space)){
-			SceneManager.LoadScene(0);
+			SceneManager.LoadScene("scene");
 			a.Play("music2");
 		}
 		if(won && Input.GetKeyDown(KeyCode.Space)){
-			SceneManager.LoadScene(0);
+			SceneManager.LoadScene("scene");
 			a.Play("music2");
 		}
 	}
 	public void PlayerDied(){
-		gameOverText.SetActive(true);
-		gameOver = true;
-		a.Stop("music2");
+			gameOverText.SetActive(true);
+			gameOver = true;
+			if(SceneManager.GetActiveScene().name == "scene"){
+				a.Stop("music2");
+			}
+			else if(SceneManager.GetActiveScene().name == "boss"){
+				a.Stop("music");
+			}
+			if(!soundPlayed){
+				soundPlayed = true;
+				a.Play("lose");
+			}
 	}
 	public void PlayerWon(){
 		winText.SetActive(true);
 		won = true;
+		a.Stop("music");
+		a.Play("win");
+	}
+	public void BossScene(){
+		SceneManager.LoadScene("boss");
 		a.Stop("music2");
+		a.Play("music");
+	}
+	public void Shot(){
+		a.Play("shot");
 	}
 }
