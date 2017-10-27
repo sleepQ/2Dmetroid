@@ -1,15 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Boss : MonoBehaviour {
 	public GameObject shot;
 	private float delay;
 	private float rate = 0.7f;
 	private float hp;
+	public Image currentHP;
+	public Text ratioText;
+	private float maxHP;
+	private float speed = 1.5f;
+	private float direction;
 	void Start(){
-		delay = Time.time + 1;
+		direction = 1;
+		delay = Time.time + 2f;
 		hp = 100f;
+		maxHP = 100f;
 	}
 	void Update () {
 		if(delay < Time.time){
@@ -17,14 +24,24 @@ public class Boss : MonoBehaviour {
 			float rand = Random.Range(-45f,45f);
 				Instantiate(shot,transform.position + new Vector3(-2,-1,0),transform.rotation * Quaternion.Euler(0,0,rand));
 		}
+		if (transform.position.y >= 4.5f) {
+			direction = -1;
+		}
+		else if (transform.position.y <= -2f){
+			direction = 1;
+		}
+		Vector3 movement = transform.up * direction * speed * Time.deltaTime;
+		transform.Translate(movement);
 	}
 	void OnTriggerEnter2D(Collider2D other){
 		if(other.tag == "beam"){
-			hp--;
+			hp -= 2;
 			if(hp <= 0){
+				hp = 0;
 				Destroy(gameObject);
 				GameControl.instance.PlayerWon();
 			}
+			UpdHP();
 			StartCoroutine(TakeDmg());
 		}
 	}
@@ -32,5 +49,10 @@ public class Boss : MonoBehaviour {
 		GetComponent<SpriteRenderer>().enabled = false;
 		yield return new WaitForSeconds(0.08f);
 		GetComponent<SpriteRenderer>().enabled = true;
+	}
+	void UpdHP(){
+		float ratio = hp / maxHP;
+		currentHP.rectTransform.localScale = new Vector3(ratio,1,1);
+		ratioText.text = (ratio*100).ToString("0")+'%';
 	}
 }

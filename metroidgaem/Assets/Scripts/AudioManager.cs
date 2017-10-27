@@ -28,9 +28,6 @@ public class AudioManager : MonoBehaviour {
 			Play("music");
 		}
 	}
-	// void Start(){
-	// 		Play("music2");
-	// }
 	public void Play (string name) {
 		Sound s = Array.Find(sounds,sound => sound.name == name);
 			if(s == null){

@@ -90,6 +90,7 @@ public class Player : MonoBehaviour {
 		if(Input.GetKey(KeyCode.Space) && Time.time > nextShot){
 			nextShot = Time.time + fireRate;
 			//sound 
+			AudioManager.instance.Play("shot");
 			if(ducked == true){
 				Instantiate(beam,duckshotspwn.position,duckshotspwn.rotation);
 			}else{
