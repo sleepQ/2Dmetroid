@@ -48,7 +48,7 @@ public class Player : MonoBehaviour {
 		// }
 	// }
 	void Update () {
-		if(!isDead){
+		if(!isDead && !GameControl.won){
 			inputH = Input.GetAxisRaw("Horizontal");
 			//from upd
 			HandleInput();
