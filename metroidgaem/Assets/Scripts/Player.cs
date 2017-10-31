@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 	private Animator anim;
@@ -26,13 +27,23 @@ public class Player : MonoBehaviour {
 	private bool ducked;
 	float inputH;
 	private BoxCollider2D boxcoll;
+
+	public static bool immortal;
+	private float immortalTime;
+	private float hp;
+	public Image currentHP;
+	public Text ratioText;
+	private float maxHP;
 	void Awake(){
 		anim = GetComponent<Animator>();
 		rbPlayer = GetComponent<Rigidbody2D>();
 		boxcoll = GetComponent<BoxCollider2D>();
 	}
 	void Start () {
-		
+		hp = 100f;
+		maxHP = 100f;
+		immortal = false;
+		immortalTime = 2f;
 		dblJump = false;
 		isDead = false;
 		rightFace = false;
@@ -86,7 +97,6 @@ public class Player : MonoBehaviour {
 					rbPlayer.AddForce(new Vector2(0,jumpForce/2));
 			}
 		}
-		
 		if(Input.GetKey(KeyCode.Space) && Time.time > nextShot){
 			nextShot = Time.time + fireRate;
 			//sound 
@@ -99,7 +109,7 @@ public class Player : MonoBehaviour {
 		}
 		if(Input.GetKey(KeyCode.S) && isGrounded){
 			anim.SetBool("duck",true);
-			boxcoll.offset = new Vector2(-0.5f,-1.31f);
+			boxcoll.offset = new Vector2(-0.5f,-1.25f);
 			boxcoll.size = new Vector2(3.74f,2f);
 		}
 		if(Input.GetKeyUp(KeyCode.S) || inputH != 0){
@@ -137,15 +147,60 @@ public class Player : MonoBehaviour {
 		return false;
 	}
 
-	void OnTriggerEnter2D(Collider2D other){
-		if(other.tag == "enemy" || other.tag == "bossBeam"){
-				isDead = true;
-				anim.SetBool("dead",true);
-				GameControl.instance.PlayerDied();
-		}
-		if(other.tag == "gem"){
-			GameControl.instance.BossScene();
+	void OnTriggerStay2D(Collider2D other){
+		if(!immortal){
+			if(other.tag == "enemy"){
+				hp -= 34;
+				StartCoroutine(Invulnerable());
+				if(hp <= 0){
+					hp = 0;
+					isDead = true;
+					anim.SetBool("dead",true);
+					GameControl.instance.PlayerDied();
+					immortal = true;
+				}
+				UpdHP();
+				StartCoroutine(TakeDmg());
+			}
 		}
 	}
-
+	void OnTriggerEnter2D(Collider2D other){
+		if(other.tag == "gem"){
+			GameControl.instance.BossScene();
+			transform.position = new Vector3(-4.34f,-3.533f,0);
+		}
+		if(!immortal){
+			if(other.tag == "bossBeam"){
+				hp -= 34;
+				StartCoroutine(Invulnerable());
+				if(hp <= 0){
+					hp = 0;
+					isDead = true;
+					anim.SetBool("dead",true);
+					GameControl.instance.PlayerDied();
+					immortal = true;
+				}
+				UpdHP();
+				StartCoroutine(TakeDmg());
+			}
+		}
+	}
+	IEnumerator TakeDmg(){
+		while(immortal){
+			GetComponent<SpriteRenderer>().enabled = false;
+			yield return new WaitForSeconds(0.08f);
+			GetComponent<SpriteRenderer>().enabled = true;
+			yield return new WaitForSeconds(0.08f);
+		}
+	}
+	IEnumerator Invulnerable(){
+		immortal = true;
+		yield return new WaitForSeconds(immortalTime);
+		immortal = false;
+	}
+	void UpdHP(){
+			float ratio = hp / maxHP;
+			currentHP.rectTransform.localScale = new Vector3(ratio,1,1);
+			ratioText.text = (ratio*100).ToString("0")+'%';
+	}
 }

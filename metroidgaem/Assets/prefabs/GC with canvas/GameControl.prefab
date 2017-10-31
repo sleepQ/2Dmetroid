@@ -51,5 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 547a67527c4c9224a84dfdc457ecef88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverText: {fileID: 0}
-  winText: {fileID: 0}
+  gameOverText: {fileID: 1134453361460314, guid: 72bf6f8076eae5b48ba7d8347f15a6c7,
+    type: 2}
+  winText: {fileID: 1508281337742986, guid: 72bf6f8076eae5b48ba7d8347f15a6c7, type: 2}

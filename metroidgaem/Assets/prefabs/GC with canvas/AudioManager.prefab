@@ -55,13 +55,13 @@ MonoBehaviour:
   - name: shot
     loop: 0
     clip: {fileID: 8300000, guid: e5ccbff7278142e43bd06c7b69d10852, type: 3}
-    volume: 0.3
+    volume: 0.2
     pitch: 1
     source: {fileID: 0}
   - name: music2
     loop: 1
     clip: {fileID: 8300000, guid: a6556fee209628049a5dfdc6e513fdc4, type: 3}
-    volume: 0.2
+    volume: 0.1
     pitch: 1
     source: {fileID: 0}
   - name: lose
@@ -79,6 +79,6 @@ MonoBehaviour:
   - name: music
     loop: 1
     clip: {fileID: 8300000, guid: bafe8534c63cee8409da5f39eca054e4, type: 3}
-    volume: 0.2
+    volume: 0.1
     pitch: 1
     source: {fileID: 0}

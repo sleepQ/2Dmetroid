@@ -10,7 +10,7 @@ public class GameControl : MonoBehaviour {
 	public GameObject winText;
 	private bool gameOver;
 	public static bool won;
-	private bool soundPlayed = false;
+	private bool soundPlayed;
 	void Awake(){
 		if(instance == null){
 			instance = this;
@@ -19,6 +19,7 @@ public class GameControl : MonoBehaviour {
 		}
 	}
 	void Start(){
+		soundPlayed = false;
 		won = false;
 		gameOver = false;
 	}
@@ -26,10 +27,14 @@ public class GameControl : MonoBehaviour {
 		if(gameOver && Input.GetKeyDown(KeyCode.R)){
 			SceneManager.LoadScene("scene");
 			AudioManager.instance.Play("music2");
+			winText.SetActive(false);
+			gameOverText.SetActive(false);
 		}
 		if(won && Input.GetKeyDown(KeyCode.R)){
 			SceneManager.LoadScene("scene");
 			AudioManager.instance.Play("music2");
+			winText.SetActive(false);
+			gameOverText.SetActive(false);
 		}
 	}
 	public void PlayerDied(){

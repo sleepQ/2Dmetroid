@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -107,7 +107,7 @@ MonoBehaviour:
     width: 1440
     height: 767
   m_MinSize: {x: 887, y: 492}
-  m_MaxSize: {x: 18004, y: 14042}
+  m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
   controlID: 49
 --- !u!114 &6
@@ -131,7 +131,7 @@ MonoBehaviour:
     width: 1150
     height: 767
   m_MinSize: {x: 610, y: 492}
-  m_MaxSize: {x: 14002, y: 14042}
+  m_MaxSize: {x: 14006, y: 14042}
   vertical: 1
   controlID: 50
 --- !u!114 &7
@@ -176,8 +176,8 @@ MonoBehaviour:
     y: 0
     width: 204
     height: 436
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -233,7 +233,7 @@ MonoBehaviour:
   - {fileID: 19}
   - {fileID: 20}
   m_Selected: 0
-  m_LastSelected: 2
+  m_LastSelected: 1
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -252,8 +252,8 @@ MonoBehaviour:
     y: 0
     width: 367
     height: 436
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 204, y: 221}
+  m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -279,10 +279,10 @@ MonoBehaviour:
     y: 436
     width: 1150
     height: 331
-  m_MinSize: {x: 332, y: 271}
-  m_MaxSize: {x: 14002, y: 10021}
+  m_MinSize: {x: 336, y: 271}
+  m_MaxSize: {x: 14006, y: 10021}
   vertical: 0
-  controlID: 97
+  controlID: 138
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -326,8 +326,8 @@ MonoBehaviour:
     y: 0
     width: 307
     height: 331
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 104, y: 121}
+  m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 22}
   m_Panes:
   - {fileID: 22}
@@ -462,28 +462,28 @@ MonoBehaviour:
     height: 415
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 702b0000
+    m_SelectedIDs: 90270000
     m_LastClickedID: 0
-    m_ExpandedIDs: 2e90fdffe04affffe84affff1a4bffffecf5ffffa2f6ffff00000000c4330000
+    m_ExpandedIDs: b6f8ffff14fcffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Canvas2
-      m_OriginalName: Canvas2
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: -46348
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 8}
     m_SearchString: 
   m_ExpandedScenes:
-  - scene
+  - boss
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -514,14 +514,14 @@ MonoBehaviour:
     width: 575
     height: 415
   m_SceneLighting: 1
-  lastFramingTime: 1277.5258644488986
+  lastFramingTime: 6650.125779225231
   m_2DMode: 1
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 201.7966, y: 157.64249, z: 0}
+    m_Target: {x: -0.79723454, y: 1.0182701, z: 0}
     speed: 2
-    m_Value: {x: 201.7966, y: 157.64249, z: 0}
+    m_Value: {x: -0.79723454, y: 1.0182701, z: 0}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -548,9 +548,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 334.6591
+    m_Target: 13.999307
     speed: 2
-    m_Value: 334.6591
+    m_Value: 13.999307
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -673,33 +673,33 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets
+    - Assets/prefabs/GC with canvas
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/prefabs/GC with canvas
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\Nicola\Desktop\2Dmetroid-master\metroidgaem
+  m_LastProjectPath: C:\Users\Nicola\Desktop\GIThub\2Dmetroid\metroidgaem
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 86290000
-    m_LastClickedID: 10630
-    m_ExpandedIDs: 000000008629000000ca9a3bffffff7f
+    m_SelectedIDs: 58270000
+    m_LastClickedID: 10072
+    m_ExpandedIDs: 00000000262600006227000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: shotpref
+      m_OriginalName: shotpref
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 11262
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 13}
     m_SearchString: 
@@ -713,7 +713,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000086290000642a0000
+    m_ExpandedIDs: 000000002626000062270000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -741,7 +741,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c6230000462700000000000030270000
+    m_ExpandedInstanceIDs: c62300004627000000000000107af8ff
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
