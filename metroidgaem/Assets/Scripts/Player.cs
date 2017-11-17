@@ -148,40 +148,45 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnTriggerStay2D(Collider2D other){
-		if(!immortal){
-			if(other.tag == "enemy"){
-				hp -= 34;
-				StartCoroutine(Invulnerable());
-				if(hp <= 0){
-					hp = 0;
-					isDead = true;
-					anim.SetBool("dead",true);
-					GameControl.instance.PlayerDied();
-					immortal = true;
+		if(!isDead){
+			if(!immortal){
+				if(other.tag == "enemy"){
+					hp -= 34;
+					StartCoroutine(Invulnerable());
+					if(hp <= 0){
+						hp = 0;
+						isDead = true;
+						anim.SetBool("dead",true);
+						GameControl.instance.PlayerDied();
+						immortal = true;
+					}
+					UpdHP();
+					StartCoroutine(TakeDmg());
 				}
-				UpdHP();
-				StartCoroutine(TakeDmg());
 			}
 		}
 	}
 	void OnTriggerEnter2D(Collider2D other){
-		if(other.tag == "gem"){
-			GameControl.instance.BossScene();
-			transform.position = new Vector3(-4.34f,-3.533f,0);
-		}
-		if(!immortal){
-			if(other.tag == "bossBeam"){
-				hp -= 34;
-				StartCoroutine(Invulnerable());
-				if(hp <= 0){
-					hp = 0;
-					isDead = true;
-					anim.SetBool("dead",true);
-					GameControl.instance.PlayerDied();
-					immortal = true;
+		if(!isDead){
+			if(other.tag == "gem"){
+				GameControl.instance.BossScene();
+			//	when i fix the player DontDestroyOnLoad
+			//	transform.position = new Vector3(-4.34f,-3.533f,0);
+			}
+			if(!immortal){
+				if(other.tag == "bossBeam"){
+					hp -= 34;
+					StartCoroutine(Invulnerable());
+					if(hp <= 0){
+						hp = 0;
+						isDead = true;
+						anim.SetBool("dead",true);
+						GameControl.instance.PlayerDied();
+						immortal = true;
+					}
+					UpdHP();
+					StartCoroutine(TakeDmg());
 				}
-				UpdHP();
-				StartCoroutine(TakeDmg());
 			}
 		}
 	}

@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 542}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -106,7 +106,7 @@ MonoBehaviour:
     y: 30
     width: 1440
     height: 767
-  m_MinSize: {x: 887, y: 492}
+  m_MinSize: {x: 883, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
   controlID: 49
@@ -130,7 +130,7 @@ MonoBehaviour:
     y: 0
     width: 1150
     height: 767
-  m_MinSize: {x: 610, y: 492}
+  m_MinSize: {x: 606, y: 492}
   m_MaxSize: {x: 14006, y: 14042}
   vertical: 1
   controlID: 50
@@ -154,8 +154,8 @@ MonoBehaviour:
     y: 0
     width: 1150
     height: 436
-  m_MinSize: {x: 610, y: 221}
-  m_MaxSize: {x: 12010, y: 4021}
+  m_MinSize: {x: 606, y: 221}
+  m_MaxSize: {x: 12006, y: 4021}
   vertical: 0
   controlID: 51
 --- !u!114 &8
@@ -203,8 +203,8 @@ MonoBehaviour:
     y: 0
     width: 946
     height: 436
-  m_MinSize: {x: 408, y: 221}
-  m_MaxSize: {x: 8008, y: 4021}
+  m_MinSize: {x: 404, y: 221}
+  m_MaxSize: {x: 8004, y: 4021}
   vertical: 0
   controlID: 52
 --- !u!114 &10
@@ -252,8 +252,8 @@ MonoBehaviour:
     y: 0
     width: 367
     height: 436
-  m_MinSize: {x: 204, y: 221}
-  m_MaxSize: {x: 4004, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -282,7 +282,7 @@ MonoBehaviour:
   m_MinSize: {x: 336, y: 271}
   m_MaxSize: {x: 14006, y: 10021}
   vertical: 0
-  controlID: 138
+  controlID: 142
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -462,9 +462,9 @@ MonoBehaviour:
     height: 415
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 90270000
+    m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: b6f8ffff14fcffff00000000
+    m_ExpandedIDs: d8cbffffb4ccffff76ceffff7eceffffeae5fffff0f0ffff18fcffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -483,7 +483,7 @@ MonoBehaviour:
       m_ClientGUIView: {fileID: 8}
     m_SearchString: 
   m_ExpandedScenes:
-  - boss
+  - scene
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -548,9 +548,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 13.999307
+    m_Target: 10.809325
     speed: 2
-    m_Value: 13.999307
+    m_Value: 10.809325
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -673,33 +673,33 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/prefabs/GC with canvas
+    - Assets
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/prefabs/GC with canvas
+  - Assets
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Nicola\Desktop\GIThub\2Dmetroid\metroidgaem
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 58270000
-    m_LastClickedID: 10072
-    m_ExpandedIDs: 00000000262600006227000000ca9a3bffffff7f
+    m_SelectedIDs: 10260000
+    m_LastClickedID: 9744
+    m_ExpandedIDs: 00000000102600004c27000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: shotpref
-      m_OriginalName: shotpref
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 11262
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 13}
     m_SearchString: 
@@ -713,7 +713,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000002626000062270000
+    m_ExpandedIDs: 00000000102600004c270000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -823,7 +823,7 @@ MonoBehaviour:
   m_ScrollPosition: {x: 0, y: 0}
   m_InspectorMode: 0
   m_PreviewResizer:
-    m_CachedPref: -224
+    m_CachedPref: -175
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}

@@ -14,11 +14,15 @@ public class BossBeam : MonoBehaviour {
 		Destroy(gameObject,2.5f);
 	}
 	void OnTriggerEnter2D(Collider2D other){
-		if(other.tag == "Player" || other.tag == "platform"){
+		if(other.tag == "Player"){
 			if(!Player.immortal){
 				Instantiate(particle,transform.position,transform.rotation);
 				Destroy(gameObject);
 			}
+		}
+		if(other.tag == "platform"){
+			Instantiate(particle,transform.position,transform.rotation);
+			Destroy(gameObject);
 		}
 	}
 }

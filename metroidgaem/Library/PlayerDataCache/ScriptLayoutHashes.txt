@@ -104,7 +104,7 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 3f32f08a64daf40b09ed864d96fe3840 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransform
 73843688b51256aed059f049c540bca8 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 528ea1fd7c01796fc60c4e2f172ea229 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
-7a91c2f9159811a7b66d6e0546dacd2b Assembly-CSharp.dll:.Player
+22f640d62d847347f285399c9bb771cb Assembly-CSharp.dll:.Player
 b1a2134104479f40d42d2776a1fa4b6f Assembly-CSharp.dll:.Enemy
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInput
@@ -112,7 +112,7 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.SpatialMappingRenderer
 33150445ba45bb38ab65d5a24a5975b0 Assembly-CSharp.dll:.Beam
-05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.DestroyByTime
+9e5caf0e71061b1b5830824ea2a56bf9 Assembly-CSharp.dll:.DestroyByTime
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ChangeColor
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
@@ -137,7 +137,6 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.SpatialMappingRenderer
-feb0cdff09a7e97fee40e26e330cbfb6 Assembly-CSharp.dll:.Hpboss
 2b463af2e9e11ef6b5b7b6b474fdd356 Assembly-CSharp.dll:.AudioManager
 12389992cd02cbfb2d4a7ecd1244033e Assembly-CSharp.dll:.CamPos
-238d6b23f745543c5bfeafc2c3227339 Assembly-CSharp.dll:.Boss
+9f15e90b68b705fb984c3a85aa7a12e6 Assembly-CSharp.dll:.Boss

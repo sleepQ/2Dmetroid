@@ -13,11 +13,13 @@ public class Boss : MonoBehaviour {
 	private float speed = 1.5f;
 	private float direction;
 	public GameObject deadParticle;
+	public static bool bossImmortal;
 	void Start(){
 		direction = 1;
 		delay = Time.time + 2f;
 		hp = 100f;
 		maxHP = 100f;
+		bossImmortal = false;
 	}
 	void Update () {
 		if(!Player.isDead){
@@ -37,16 +39,18 @@ public class Boss : MonoBehaviour {
 		transform.Translate(movement);
 	}
 	void OnTriggerEnter2D(Collider2D other){
-		if(other.tag == "beam"){
-			hp -= 2;
-			if(hp <= 0){
-				hp = 0;
-				Destroy(gameObject);
-				Instantiate(deadParticle,transform.position,transform.rotation);
-				GameControl.instance.PlayerWon();
+		if(!bossImmortal){
+			if(other.tag == "beam"){
+				hp -= 2;
+				if(hp <= 0){
+					hp = 0;
+					Destroy(gameObject);
+					Instantiate(deadParticle,transform.position,transform.rotation);
+					GameControl.instance.PlayerWon();
+				}
+				UpdHP();
+				StartCoroutine(TakeDmg());
 			}
-			UpdHP();
-			StartCoroutine(TakeDmg());
 		}
 	}
 	IEnumerator TakeDmg(){

@@ -40,6 +40,7 @@ public class GameControl : MonoBehaviour {
 	public void PlayerDied(){
 		gameOverText.SetActive(true);
 		gameOver = true;
+		Boss.bossImmortal = true;
 		if(SceneManager.GetActiveScene().name == "scene"){
 			AudioManager.instance.Stop("music2");
 		}
@@ -54,6 +55,7 @@ public class GameControl : MonoBehaviour {
 	public void PlayerWon(){
 		winText.SetActive(true);
 		won = true;
+		Player.immortal = true;
 		AudioManager.instance.Stop("music");
 		AudioManager.instance.Play("win");
 	}
