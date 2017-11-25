@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d98732083f957b94ab43bfd552345b09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  t: 2
+  t: 1
 --- !u!198 &198826638814960516
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -297,7 +297,7 @@ ParticleSystem:
         key7: {r: 0.99780256, g: 0.039828695, b: 0, a: 0}
         ctime0: 0
         ctime1: 9638
-        ctime2: 18119
+        ctime2: 12914
         ctime3: 65535
         ctime4: 65535
         ctime5: 65535

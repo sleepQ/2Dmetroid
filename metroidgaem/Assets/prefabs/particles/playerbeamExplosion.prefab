@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d98732083f957b94ab43bfd552345b09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  t: 2
+  t: 1
 --- !u!198 &198124252278068484
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -194,7 +194,7 @@ ParticleSystem:
   moveWithTransform: 2
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 0
-  randomSeed: -58984061
+  randomSeed: -1549200236
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -287,19 +287,19 @@ ParticleSystem:
       maxColor: {r: 1, g: 0.26896548, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0, g: 0.21568628, b: 1, a: 1}
-        key1: {r: 0, g: 0.21379304, b: 1, a: 1}
-        key2: {r: 0.6156863, g: 0, b: 1, a: 1}
-        key3: {r: 0.6156863, g: 0, b: 1, a: 1}
-        key4: {r: 0.93390346, g: 0.04277261, b: 0.06403983, a: 0}
-        key5: {r: 1, g: 0.47586203, b: 0, a: 1}
-        key6: {r: 0.99780256, g: 0.039828695, b: 0, a: 0}
+        key0: {r: 0.6156863, g: 0, b: 1, a: 1}
+        key1: {r: 0.6156863, g: 0, b: 1, a: 1}
+        key2: {r: 0, g: 0.21379304, b: 1, a: 1}
+        key3: {r: 0, g: 0.21379304, b: 1, a: 1}
+        key4: {r: 0, g: 0.21379304, b: 1, a: 0}
+        key5: {r: 0, g: 0.21379304, b: 1, a: 1}
+        key6: {r: 1, g: 0.47586203, b: 0, a: 0}
         key7: {r: 0.99780256, g: 0.039828695, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 14842
-        ctime2: 18119
-        ctime3: 28527
-        ctime4: 33153
+        ctime0: 18504
+        ctime1: 36623
+        ctime2: 39321
+        ctime3: 57632
+        ctime4: 57632
         ctime5: 65535
         ctime6: 65535
         ctime7: 65535
@@ -312,7 +312,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_NumColorKeys: 6
+        m_NumColorKeys: 4
         m_NumAlphaKeys: 2
       minGradient:
         serializedVersion: 2
@@ -1105,7 +1105,7 @@ ParticleSystem:
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
-        ctime1: 50308
+        ctime1: 48380
         ctime2: 56283
         ctime3: 65535
         ctime4: 65535

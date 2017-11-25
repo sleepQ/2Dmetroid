@@ -16,7 +16,7 @@ public class ChangeColor : MonoBehaviour {
 		{
 			target.material.color = targetColor;
 			targetColor = new Color(Random.value, Random.value, Random.value);
-			timeLeft = 2.5f;
+			timeLeft = 3f;
 		}
 		else
 		{

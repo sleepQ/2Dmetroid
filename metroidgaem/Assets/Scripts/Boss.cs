@@ -5,28 +5,48 @@ using UnityEngine.UI;
 public class Boss : MonoBehaviour {
 	public GameObject shot;
 	private float delay;
-	private float rate = 0.6f;
+	private float rageRate;
+	private float rate;
 	private float hp;
 	public Image currentHP;
 	public Text ratioText;
 	private float maxHP;
-	private float speed = 1.5f;
+	private float speed;
 	private float direction;
 	public GameObject deadParticle;
 	public static bool bossImmortal;
+	private Animator anim;
 	void Start(){
+		anim = GetComponent<Animator>();
 		direction = 1;
 		delay = Time.time + 2f;
 		hp = 100f;
 		maxHP = 100f;
 		bossImmortal = false;
+		rate = 0.6f;
+		rageRate = 1.2f;
+		speed = 1.5f;
 	}
 	void Update () {
-		if(!Player.isDead){
-			if(delay < Time.time){
-				delay = Time.time + rate;
-				float rand = Random.Range(-45f,45f);
-				Instantiate(shot,transform.position + new Vector3(-2,-1,0),transform.rotation * Quaternion.Euler(0,0,rand));
+		if(hp > maxHP/2){
+			anim.SetBool("rage",false);
+			if(!Player.isDead){
+				if(delay < Time.time){
+					delay = Time.time + rate;
+					float rand = Random.Range(-45f,45f);
+					Instantiate(shot,transform.position + new Vector3(-2,-1,0),transform.rotation * Quaternion.Euler(0,0,rand));
+				}
+			}
+		}
+		if(hp <= maxHP/2){
+			anim.SetBool("rage",true);
+			if(!Player.isDead){
+				if(delay < Time.time){
+					delay = Time.time + rageRate;
+					for(int i=1;i<19;i++){
+						Instantiate(shot,transform.position + new Vector3(-2,-1,0),transform.rotation * Quaternion.Euler(0,0,i*20));
+					}
+				}
 			}
 		}
 		if (transform.position.y >= 4.5f) {

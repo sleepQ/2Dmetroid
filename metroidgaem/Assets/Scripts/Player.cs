@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 	private Animator anim;
-	public float speed = 5f;
+	public float speed;
 	public static bool rightFace;
 	private Rigidbody2D rbPlayer;
 	public Transform[] groundPoints;
@@ -40,11 +40,14 @@ public class Player : MonoBehaviour {
 		boxcoll = GetComponent<BoxCollider2D>();
 	}
 	void Start () {
+		jumpForce = 580f;
+		speed = 5f;
+		dblJump = false;
+		jump = false;
 		hp = 100f;
 		maxHP = 100f;
 		immortal = false;
 		immortalTime = 2f;
-		dblJump = false;
 		isDead = false;
 		rightFace = false;
 	}
@@ -61,9 +64,7 @@ public class Player : MonoBehaviour {
 	void Update () {
 		if(!isDead && !GameControl.won){
 			inputH = Input.GetAxisRaw("Horizontal");
-			//from upd
 			HandleInput();
-	
 			isGrounded = IsGrounded();
 			Movement(inputH);
 			Flip(inputH);
@@ -72,12 +73,15 @@ public class Player : MonoBehaviour {
 	void Movement(float inputH){
 		rbPlayer.velocity = new Vector2(inputH * speed,rbPlayer.velocity.y);
 		anim.SetFloat("speed",Mathf.Abs(inputH));
+		//if u alrdy jumped
 		if(!isGrounded && jump){
 			//jump was and is here
 			jump = false;
 			isGrounded = false;
+			//anim.jump1 is normal jump,anim.jump is dbljump 
 			anim.SetBool("jump1",true);
 		}
+		// if u grounded and u jumped
 		if(isGrounded && jump){
 			//jump was not here
 			jump = false;
@@ -92,9 +96,9 @@ public class Player : MonoBehaviour {
 			jump = true;
 			if(Input.GetKeyDown(KeyCode.W) && !isGrounded && dblJump){
 				dblJump = false;
-					anim.SetBool("jump",true);
-					Instantiate(jumpParticle,transform.position,transform.rotation);
-					rbPlayer.AddForce(new Vector2(0,jumpForce/2));
+				anim.SetBool("jump",true);
+				Instantiate(jumpParticle,transform.position,transform.rotation);
+				rbPlayer.AddForce(new Vector2(0,jumpForce/2));
 			}
 		}
 		if(Input.GetKey(KeyCode.Space) && Time.time > nextShot){
@@ -109,8 +113,8 @@ public class Player : MonoBehaviour {
 		}
 		if(Input.GetKey(KeyCode.S) && isGrounded){
 			anim.SetBool("duck",true);
-			boxcoll.offset = new Vector2(-0.5f,-1.25f);
-			boxcoll.size = new Vector2(3.74f,2f);
+			boxcoll.offset = new Vector2(-0.5f,-1.40f);
+			boxcoll.size = new Vector2(3.5f,1.7f);
 		}
 		if(Input.GetKeyUp(KeyCode.S) || inputH != 0){
 			anim.SetBool("duck",false);
