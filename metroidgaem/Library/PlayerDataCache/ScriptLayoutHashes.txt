@@ -104,7 +104,7 @@ e9bdabf9265d758d56f01bb188916fa8 UnityEngine.Networking.dll:UnityEngine.Networki
 3f32f08a64daf40b09ed864d96fe3840 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransform
 73843688b51256aed059f049c540bca8 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 528ea1fd7c01796fc60c4e2f172ea229 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
-22f640d62d847347f285399c9bb771cb Assembly-CSharp.dll:.Player
+7bc0ea23b0930651f5ce8c6e1a857729 Assembly-CSharp.dll:.Player
 b1a2134104479f40d42d2776a1fa4b6f Assembly-CSharp.dll:.RotateEnemy
 b1a2134104479f40d42d2776a1fa4b6f Assembly-CSharp.dll:.Enemy
 bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.AudioSpatializerMicrosoft

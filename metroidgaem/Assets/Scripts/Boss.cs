@@ -16,6 +16,8 @@ public class Boss : MonoBehaviour {
 	public GameObject deadParticle;
 	public static bool bossImmortal;
 	private Animator anim;
+	private float beamDmg;
+	private float supaBeamDmg;
 	void Start(){
 		anim = GetComponent<Animator>();
 		direction = 1;
@@ -26,6 +28,8 @@ public class Boss : MonoBehaviour {
 		rate = 0.6f;
 		rageRate = 1.2f;
 		speed = 1.5f;
+		beamDmg = 2f;
+		supaBeamDmg = 15f;
 	}
 	void Update () {
 		if(hp > maxHP/2){
@@ -61,7 +65,18 @@ public class Boss : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other){
 		if(!bossImmortal){
 			if(other.tag == "beam"){
-				hp -= 2;
+				hp -= beamDmg;
+				if(hp <= 0){
+					hp = 0;
+					Destroy(gameObject);
+					Instantiate(deadParticle,transform.position,transform.rotation);
+					GameControl.instance.PlayerWon();
+				}
+				UpdHP();
+				StartCoroutine(TakeDmg());
+			}
+			if(other.tag == "supaBeam"){
+				hp -= supaBeamDmg;
 				if(hp <= 0){
 					hp = 0;
 					Destroy(gameObject);

@@ -9,6 +9,8 @@ TagManager:
   - beam
   - gem
   - bossBeam
+  - rotate
+  - supaBeam
   layers:
   - Default
   - TransparentFX

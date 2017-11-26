@@ -29,6 +29,9 @@ public class RotateEnemy : MonoBehaviour {
 				Destroy(gameObject);
 			}
 		}
+		if(other.tag == "supaBeam"){
+			Destroy(gameObject);
+		}
 		float i = 1;
 		if(other.tag == "rotate"){
 			RotateE(i);

@@ -17,10 +17,13 @@ public class Player : MonoBehaviour {
 	[SerializeField]
 	private float jumpForce;
 	private float nextShot;
+	private float nextSupaShot;
 	public float fireRate;
+	public float supaFireRate;
 	public Transform shotspwn;
 	public Transform duckshotspwn;
 	public GameObject beam;
+	public GameObject supaBeam;
 	public static bool isDead;
 	private bool dblJump;
 	public GameObject jumpParticle;
@@ -109,6 +112,15 @@ public class Player : MonoBehaviour {
 				Instantiate(beam,duckshotspwn.position,duckshotspwn.rotation);
 			}else{
 				Instantiate(beam,shotspwn.position,shotspwn.rotation);
+			}
+		}
+		if(Input.GetKey(KeyCode.E) && Time.time > nextSupaShot){
+			nextSupaShot = Time.time + supaFireRate;
+			AudioManager.instance.Play("shot");
+			if(ducked == true){
+				Instantiate(supaBeam,duckshotspwn.position,duckshotspwn.rotation);
+			}else{
+				Instantiate(supaBeam,shotspwn.position,shotspwn.rotation);
 			}
 		}
 		if(Input.GetKey(KeyCode.S) && isGrounded){
